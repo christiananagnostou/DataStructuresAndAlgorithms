@@ -88,7 +88,23 @@ class BST {
     return curr.data;
   }
 
-  isPresent() {}
+  isPresent(data) {
+    if (!this.root) return false;
+
+    let curr = this.root;
+    while (curr) {
+      if (data === curr.data) {
+        return true;
+      }
+
+      if (data < curr.data) {
+        curr = curr.left;
+      } else if (data > curr.data) {
+        curr = curr.right;
+      }
+    }
+    return false;
+  }
 
   isBalanced() {
     return this.findMaxHeight() - this.findMinHeight() <= 1;
@@ -124,10 +140,22 @@ Tree.add(22);
 Tree.add(5);
 Tree.add(7);
 Tree.add(20);
+
+Tree.add(10);
+Tree.remove(10);
+
+console.log(Tree.isPresent(22)); // true
+console.log(Tree.isPresent(99)); // false
+
+console.log(Tree.findMin()); //3
+console.log(Tree.findMax()); // 22
+
+console.log(Tree.findMinHeight()); // 1
+console.log(Tree.findMaxHeight()); // 3
+console.log(Tree.isBalanced()); // false
+
 Tree.add(10);
 
-console.log(Tree.findMin());
-console.log(Tree.findMax());
-console.log(Tree.findMinHeight());
-console.log(Tree.findMaxHeight());
-console.log(Tree.isBalanced());
+console.log(Tree.findMinHeight()); // 2
+console.log(Tree.findMaxHeight()); // 3
+console.log(Tree.isBalanced()); // true
