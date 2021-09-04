@@ -1,0 +1,1 @@
+Would be cool if this had some general information about how this repo is organized with a visual representation (dotted list?) that links to the directories.
