@@ -312,18 +312,3 @@ console.log(Tree.preOrder()); // [9, 4, 3, 6, 5, 7, 17, 10, 22, 20]
 console.log(Tree.postOrder()); // [3, 5, 7, 6, 4, 10, 20, 22, 17, 9]
 console.log(Tree.levelOrder()); // [9, 4, 17, 3, 6, 10, 22, 5, 7, 20]
 
-// Given the root of a binary tree, determine if it is a valid binary search tree (BST).
-
-const isValidBST = function (root) {
-  const checkNode = function (node, min = null, max = null) {
-    if (!node) return true;
-
-    if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
-      return false;
-    }
-
-    return checkNode(node.left, min, node.val) && checkNode(node.right, node.val, max);
-  };
-
-  return checkNode(root);
-};
