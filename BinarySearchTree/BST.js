@@ -90,11 +90,11 @@ class BST {
     const searchTree = function (node) {
       // If data is less than node data
       if (data < node.data) {
-        return !node.left ? (node.left = new Node(data)) : searchTree(node.left);
+        return node.left ? searchTree(node.left) : (node.left = new Node(data));
       }
       // If data is greater than node data
       else if (data > node.data) {
-        return !node.right ? (node.right = new Node(data)) : searchTree(node.right);
+        return node.right ? searchTree(node.right) : (node.right = new Node(data));
       }
       // If node is equal to node data
       else {
@@ -311,3 +311,19 @@ console.log(Tree.inOrder()); // [3, 4, 5, 6, 7, 9, 10, 17, 20, 22]
 console.log(Tree.preOrder()); // [9, 4, 3, 6, 5, 7, 17, 10, 22, 20]
 console.log(Tree.postOrder()); // [3, 5, 7, 6, 4, 10, 20, 22, 17, 9]
 console.log(Tree.levelOrder()); // [9, 4, 17, 3, 6, 10, 22, 5, 7, 20]
+
+// Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+const isValidBST = function (root) {
+  const checkNode = function (node, min = null, max = null) {
+    if (!node) return true;
+
+    if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
+      return false;
+    }
+
+    return checkNode(node.left, min, node.val) && checkNode(node.right, node.val, max);
+  };
+
+  return checkNode(root);
+};
