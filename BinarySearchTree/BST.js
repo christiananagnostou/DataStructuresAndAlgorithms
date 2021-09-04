@@ -55,6 +55,7 @@ NOTES:
             3   6   10   22
                / \      /
               5   7    20
+
     Depth-First Search (DFS) Algorithms:
       1) In Order - (left-current-right): Visit the current node after visiting all nodes inside left subtree but before visiting any node within the right subtree.
                   => 3,4,5,6,7,9,10,17,20,22
@@ -248,19 +249,34 @@ class BST {
 
     Q.push(this.root);
 
-    while (Q.length > 0) {
-      let node = Q.shift();
-
+    while (Q.length) {
+      const node = Q.shift();
       res.push(node.data);
 
       node.left && Q.push(node.left);
       node.right && Q.push(node.right);
     }
+
     return res;
   }
 }
 
 const Tree = new BST();
+
+/*
+
+  Tree we are constructing 
+
+           9
+         /   \
+        /     \
+       4       17
+      / \     /  \
+     3   6   10   22
+        / \      /
+       5   7    20
+
+*/
 
 Tree.add(9);
 Tree.add(4);
