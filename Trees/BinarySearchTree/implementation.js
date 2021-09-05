@@ -171,9 +171,21 @@ class BST {
   }
 
   levelOrder() {
-    if (!node) return null;
+    if (!this.root) return null;
 
-    let;
+    const res = [];
+    const Q = [];
+
+    Q.push(this.root);
+
+    while (Q.length) {
+      const node = Q.shift();
+      res.push(node.data);
+
+      node.left && Q.push(node.left);
+      node.right && Q.push(node.right);
+    }
+    return res;
   }
 }
 
