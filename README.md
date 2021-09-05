@@ -67,4 +67,4 @@ Each subdirectory is a topic, with subdirectories for sub-topics. E.g.:
 
 1. Install node using your prefered package manager
 2. cd into the desired directory ex: ">> cd LinkedLists/SinglyLinked"
-3. run node on the desired .mjs file
+3. run node on the desired .js file
