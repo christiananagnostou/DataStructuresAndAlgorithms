@@ -3,17 +3,21 @@
 Each subdirectory is a topic, with subdirectories for sub-topics.
 
 - [Arrays](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Arrays)
+
   - [ArrayList](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Arrays/ArrayList)
   - [Queue](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Arrays/Queue)
   - [Stack](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Arrays/Stack)
 
 - [LinkedLists](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/LinkedLists)
+
   - [Cyclic](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/LinkedLists/Cyclic)
   - [DoublyLinked](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/LinkedLists/DoublyLinked)
   - [SinglyLInked](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/LinkedLists/SinglyLinked)
 
 - [Trees](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees)
+
   - [BinarySearchTree](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees/BinarySearchTree)
+  - [BinaryTree](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees/BinaryTree)
   - [Heaps](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees/Heaps)
     - [MaxHeap](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees/Heaps/MaxHeap)
     - [MinHeap](https://github.com/ChristianAnagnostou/DataStructuresAndAlgorithms/tree/main/Trees/Heaps/MinHeap)
