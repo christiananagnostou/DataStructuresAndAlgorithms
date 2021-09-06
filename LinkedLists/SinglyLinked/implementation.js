@@ -110,7 +110,7 @@ class LinkedList {
     return prev;
   }
 }
-module.exports = { LinkedList, Node };
+module.exports = LinkedList;
 
 // const LL = new LinkedList();
 
