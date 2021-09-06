@@ -189,7 +189,9 @@ class BST {
   }
 }
 
-const Tree = new BST();
+module.exports = BST;
+
+// const Tree = new BST();
 
 /*
 
@@ -206,36 +208,36 @@ const Tree = new BST();
 
 */
 
-Tree.add(9);
-Tree.add(4);
-Tree.add(17);
-Tree.add(3);
-Tree.add(6);
-Tree.add(22);
-Tree.add(5);
-Tree.add(7);
-Tree.add(20);
+// Tree.add(9);
+// Tree.add(4);
+// Tree.add(17);
+// Tree.add(3);
+// Tree.add(6);
+// Tree.add(22);
+// Tree.add(5);
+// Tree.add(7);
+// Tree.add(20);
 
-Tree.add(10);
-Tree.remove(10);
+// Tree.add(10);
+// Tree.remove(10);
 
-console.log(Tree.isPresent(22)); // true
-console.log(Tree.isPresent(99)); // false
+// console.log(Tree.isPresent(22)); // true
+// console.log(Tree.isPresent(99)); // false
 
-console.log(Tree.findMin()); //3
-console.log(Tree.findMax()); // 22
+// console.log(Tree.findMin()); //3
+// console.log(Tree.findMax()); // 22
 
-console.log(Tree.findMinHeight()); // 1
-console.log(Tree.findMaxHeight()); // 3
-console.log(Tree.isBalanced()); // false
+// console.log(Tree.findMinHeight()); // 1
+// console.log(Tree.findMaxHeight()); // 3
+// console.log(Tree.isBalanced()); // false
 
-Tree.add(10); // Add 10 to balance out the tree
+// Tree.add(10); // Add 10 to balance out the tree
 
-console.log(Tree.findMinHeight()); // 2
-console.log(Tree.findMaxHeight()); // 3
-console.log(Tree.isBalanced()); // true
+// console.log(Tree.findMinHeight()); // 2
+// console.log(Tree.findMaxHeight()); // 3
+// console.log(Tree.isBalanced()); // true
 
-console.log(Tree.inOrder()); // [3, 4, 5, 6, 7, 9, 10, 17, 20, 22]
-console.log(Tree.preOrder()); // [9, 4, 3, 6, 5, 7, 17, 10, 22, 20]
-console.log(Tree.postOrder()); // [3, 5, 7, 6, 4, 10, 20, 22, 17, 9]
-console.log(Tree.levelOrder()); // [9, 4, 17, 3, 6, 10, 22, 5, 7, 20]
+// console.log(Tree.inOrder()); // [3, 4, 5, 6, 7, 9, 10, 17, 20, 22]
+// console.log(Tree.preOrder()); // [9, 4, 3, 6, 5, 7, 17, 10, 22, 20]
+// console.log(Tree.postOrder()); // [3, 5, 7, 6, 4, 10, 20, 22, 17, 9]
+// console.log(Tree.levelOrder()); // [9, 4, 17, 3, 6, 10, 22, 5, 7, 20]
