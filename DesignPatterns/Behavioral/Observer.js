@@ -82,11 +82,11 @@ var testSubscription = pubsub.subscribe("example1", testHandler);
 // At this point, topics looks like this:  { example1: [ { token: '1', func: [Function: testHandler] } ]}
 
 // Publishers are in charge of "publishing" notifications about events
-pubsub.publish("example1", "hello world!");
-pubsub.publish("example1", ["test", "a", "b", "c"]);
-pubsub.publish("example1", [{ color: "blue" }, { text: "hello" }]);
+pubsub.publish("example1", "hello world!"); // example1: hello world!
+pubsub.publish("example1", ["test", "a", "b", "c"]); // example1: test,a,b,c
+pubsub.publish("example1", [{ color: "blue" }, { text: "hello" }]); // example1: [object Object],[object Object]
 
 // Unsubscribe if you no longer wish to be notified
 pubsub.unsubscribe(testSubscription);
-// This will return false
-pubsub.publish("example1", "hello again! (this will fail)");
+
+pubsub.publish("example1", "hello again! (this will fail)"); // This returns false
