@@ -55,3 +55,29 @@ var maxDepth = function (root) {
 
   return findMaxDepth(root);
 };
+
+/**
+ * You have a binary tree t. Your task is to find the largest value in each row of this tree.
+ *
+ * @param {TreeNode} t
+ * @returns
+ */
+function largestValuesInTreeRows(t) {
+  if (!t) return [];
+
+  const res = [];
+
+  function getDepth(node, d = 0) {
+    if (!node) return -1;
+
+    getDepth(node.left, d + 1);
+    getDepth(node.right, d + 1);
+
+    if (!res[d] || res[d] < node.value) {
+      res[d] = node.value;
+    }
+  }
+  getDepth(t);
+
+  return res;
+}
