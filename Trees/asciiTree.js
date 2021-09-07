@@ -2,16 +2,18 @@ const BST = require("./BinarySearchTree/implementation");
 const BT = require("./BinaryTree/implementation");
 
 const Tree1 = new BST();
-[7, 1, 3, 9, 8, 2, 12, 9, 5, 34, 100, 101].map((num) => Tree1.add(num));
+[7, 1, 3, 9, 8, 2, 12, 9, 5, 34, 100, 101, -1, -10, -15, -12, -5, -13, -4, -3].map((num) =>
+  Tree1.add(num)
+);
 
 const Tree2 = new BT();
 Tree2.buildFromArray([5, 1, 4, 1, null, null, 3]);
 
-generate(Tree1);
-generate(Tree2);
+levelOrderGenerate(Tree1);
+levelOrderGenerate(Tree2);
 
-function generate(tree) {
-  const levelArr = treeToArray(tree);
+function levelOrderGenerate(tree) {
+  const levelArr = treeToLevelOrderArray(tree);
   let res = "";
 
   const totalLevels = Math.floor(Math.log2(levelArr.length));
@@ -25,7 +27,11 @@ function generate(tree) {
     let spacing = " ".repeat(Math.pow(2, totalLevels - currLevel + 1));
     const level = values.join(spacing);
 
-    const leftPad = prevLevelLength == -1 ? 0 : prevLevelLength / 2 - level.length / 2;
+    const leftPad =
+      prevLevelLength == -1 || prevLevelLength < level.length
+        ? Math.pow(2, (totalLevels - currLevel) * 2)
+        : prevLevelLength / 2 - level.length / 2;
+
     res = " ".repeat(leftPad) + level + "\n\n" + res;
 
     prevLevelLength = level.length + leftPad * 2;
@@ -36,7 +42,7 @@ function generate(tree) {
   return res;
 }
 
-function treeToArray(tree) {
+function treeToLevelOrderArray(tree) {
   if (!tree.root) return [];
 
   const Q = [tree.root];
