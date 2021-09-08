@@ -1,11 +1,6 @@
 const BST = require("./implementation");
 const BT = require("../BinaryTree/implementation");
 
-const validBST = new BST();
-[2, 1, 3].map((num) => validBST.add(num));
-const invalidBST = new BT();
-invalidBST.buildFromArray([5, 1, 4, null, null, 3, 6]);
-
 /**
  * PROMPT:
  * Given the root of a binary tree, determine if it is a valid binary search tree (BST).
@@ -14,7 +9,7 @@ invalidBST.buildFromArray([5, 1, 4, null, null, 3, 6]);
  *      - The right subtree of a node contains only nodes with keys greater than the node's key.
  *      - Both the left and right subtrees must also be binary search trees.
  *
- * @param {TreeNode} root
+ * @param {BT | BST} root
  * @return {boolean}
  */
 const isValidBST = function (root) {
@@ -30,7 +25,12 @@ const isValidBST = function (root) {
 
   return checkNode(root);
 };
+const validBST = new BST();
+[2, 1, 3].map((num) => validBST.add(num));
 console.log(isValidBST(validBST));
+
+const invalidBST = new BT();
+invalidBST.buildFromArray([5, 1, 4, null, null, 3, 6]);
 console.log(isValidBST(invalidBST));
 
 /**
@@ -38,7 +38,7 @@ console.log(isValidBST(invalidBST));
  * Given the root of a binary tree, return its maximum depth.
  * A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
  *
- * @param {TreeNode} root
+ * @param {BST | BT} root
  * @return {number}
  */
 var maxDepth = function (root) {
@@ -59,7 +59,7 @@ var maxDepth = function (root) {
 /**
  * You have a binary tree t. Your task is to find the largest value in each row of this tree.
  *
- * @param {TreeNode} t
+ * @param {BT} t
  * @returns
  */
 function largestValuesInTreeRows(t) {
