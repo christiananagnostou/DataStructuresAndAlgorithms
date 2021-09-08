@@ -47,7 +47,7 @@ class List {
   }
 
   find(element) {
-    this.dataStore.indexOf(element);
+    return this.dataStore.indexOf(element);
   }
 
   append(element) {
