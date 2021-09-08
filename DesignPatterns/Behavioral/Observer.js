@@ -35,14 +35,15 @@ var pubsub = {};
   // Subscribe to events of interest with a specific topic name and
   // a callback function, to be executed when the topic/event is observed
   q.subscribe = function (topic, func) {
+    // Create new topic array to hold the subscriber if one doesn't already exist
     if (!topics[topic]) {
       topics[topic] = [];
     }
-
+    // Increment the uid and assign it to token
     var token = (++subUid).toString();
-
+    // Add the new token and callback to the seleceted topic array
     topics[topic].push({ token: token, func: func });
-
+    // Return the token to be used with unsubscribe
     return token;
   };
 
@@ -90,3 +91,56 @@ pubsub.publish("example1", [{ color: "blue" }, { text: "hello" }]); // example1:
 pubsub.unsubscribe(testSubscription);
 
 pubsub.publish("example1", "hello again! (this will fail)"); // This returns false
+
+console.log("\n---------------------------------------------------\n");
+
+/**
+ *
+ * This shows that you can use the same pubsub object for multiple purposes.
+ * This can become hard to manage when there are multiple different subjects being subscribed to
+ * so it is best to modularize and catagorize
+ *
+ */
+
+// Grid takes data from the callback function 'gridUpdate' and logs it to console
+var grid = {
+  addEntry: function (data) {
+    if (data !== "undefined") {
+      console.log(
+        "Entry: " +
+          data.title +
+          " Changenet / % " +
+          data.changenet +
+          " / " +
+          data.percentage +
+          " % added"
+      );
+    }
+  },
+  updateCounter: function (timestamp) {
+    console.log("grid last updated at: " + timestamp);
+  },
+};
+
+// The callback function
+var gridUpdate = function (topics, data) {
+  grid.addEntry(data);
+  grid.updateCounter(data.timestamp);
+};
+
+// Subscribe to the
+var gridSubscription = pubsub.subscribe("dataUpdated", gridUpdate);
+
+pubsub.publish("dataUpdated", {
+  title: "Microsoft shares",
+  changenet: 4,
+  percentage: 33,
+  timestamp: "17:34:12",
+});
+
+pubsub.publish("dataUpdated", {
+  title: "Dell shares",
+  changenet: 10,
+  percentage: 20,
+  timestamp: "17:35:16",
+});
