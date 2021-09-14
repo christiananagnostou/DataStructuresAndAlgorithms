@@ -1,18 +1,39 @@
 const BST = require("./BinarySearchTree/implementation");
 const BT = require("./BinaryTree/implementation");
 
+/**
+ *
+ * This file contains two types of ascii tree visualizers.
+ *
+ * 1) printLevelOrder()
+ *      - params: any valid binary tree & optional character to signify null values (defaults to 'x')
+ *      - This will print the tree with the top-most row being the root row and every subsequent row below that.
+ *
+ * 2) printInOrder()
+ *      - params: any valid tree root / node
+ *      - This will print the tree horizontally and will only contain the values in the the tree (no null node representation)
+ *
+ */
+
+// Examples
 const Tree1 = new BST();
-[7, 1, 3, 9, 8, 2, 12, 9, 5, 34, 100, 101, -1, -10, -15, -12, -5, -13, -4, -3].map((num) =>
-  Tree1.add(num)
-);
+[7, 1, 3, 9, 8, 2, 12, 9, 5, 34, 100, 101, -1, -10, -15, -12, -5].map((num) => Tree1.add(num));
 
 const Tree2 = new BT();
 Tree2.buildFromArray([5, 1, 4, 1, null, null, 3]);
 
-levelOrderGenerate(Tree1);
-levelOrderGenerate(Tree2);
+const BalancedTree = new BST();
+BalancedTree.buildFromArray([3, 5, 6, 7, 8]);
 
-function levelOrderGenerate(tree) {
+printLevelOrder(Tree1);
+printLevelOrder(Tree2);
+printLevelOrder(BalancedTree);
+
+printInOrder(Tree1.root);
+printInOrder(Tree2.root);
+printInOrder(BalancedTree.root);
+
+function printLevelOrder(tree) {
   const levelArr = treeToLevelOrderArray(tree);
   let res = "";
 
@@ -25,6 +46,7 @@ function levelOrderGenerate(tree) {
     const values = levelArr.slice(Math.pow(2, currLevel) - 1, Math.pow(2, currLevel + 1) - 1);
 
     let spacing = " ".repeat(Math.pow(2, totalLevels - currLevel + 1));
+    
     const level = values.join(spacing);
 
     const leftPad =
@@ -83,4 +105,10 @@ function treeToLevelOrderArray(tree) {
   }
   // Cut off all trailing nulls
   return res.slice(0, lastNumIdx + 1);
+}
+
+function printInOrder(node, prefix = "", isLeft = true) {
+  node.right && printInOrder(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+  node.left && printInOrder(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
 }
