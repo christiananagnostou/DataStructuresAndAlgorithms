@@ -189,6 +189,38 @@ class BST {
   }
 }
 
+BST.prototype.buildFromArray = function (arr) {
+  if (this.root)
+    throw new Error("This tree already exists. Create a new binary tree and try again.");
+  if (arr[0] == null) return null;
+
+  // Sort and remove duplicates
+  arr = [...new Set(arr.sort((a, b) => a - b))];
+
+  // Get mid element and make that the root
+  const mid = Math.floor(arr.length / 2);
+
+  this.root = new Node(arr[mid]);
+
+  // Recursively add the middle elements of the left and right side of the array
+  function binaryAdd(leftArr, rightArr, root) {
+    if (!root) return;
+
+    const leftMid = Math.floor(leftArr.length / 2);
+    const rightMid = Math.floor(rightArr.length / 2);
+
+    if (leftArr[leftMid]) root.left = new Node(leftArr[leftMid]);
+    if (rightArr[rightMid]) root.right = new Node(rightArr[rightMid]);
+
+    binaryAdd(leftArr.slice(0, leftMid), leftArr.slice(leftMid + 1), root.left);
+    binaryAdd(rightArr.slice(0, rightMid), rightArr.slice(rightMid + 1), root.right);
+  }
+
+  binaryAdd(arr.slice(0, mid), arr.slice(mid + 1), this.root);
+
+  return this.root;
+};
+
 module.exports = BST;
 
 // const Tree = new BST();

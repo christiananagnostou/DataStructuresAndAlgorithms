@@ -25,13 +25,13 @@ const isValidBST = function (root) {
 
   return checkNode(root);
 };
-const validBST = new BST();
-[2, 1, 3].map((num) => validBST.add(num));
-console.log(isValidBST(validBST));
+// const validBST = new BST();
+// [2, 1, 3].map((num) => validBST.add(num));
+// console.log(isValidBST(validBST));
 
-const invalidBST = new BT();
-invalidBST.buildFromArray([5, 1, 4, null, null, 3, 6]);
-console.log(isValidBST(invalidBST));
+// const invalidBST = new BT();
+// invalidBST.buildFromArray([5, 1, 4, null, null, 3, 6]);
+// console.log(isValidBST(invalidBST));
 
 /**
  * PROMPT:
