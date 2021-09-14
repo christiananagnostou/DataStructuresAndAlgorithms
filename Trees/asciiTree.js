@@ -137,6 +137,6 @@ function createLevelOrderArray(root) {
  */
 function printInOrder(node, prefix = "", isLeft = true) {
   node.right && printInOrder(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
-  console.log(`${prefix}${isLeft ? "└──" : "┌── "}${node.data}`.substring(3));
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`.substring(1));
   node.left && printInOrder(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
 }
