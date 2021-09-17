@@ -1,6 +1,14 @@
 const BST = require("./implementation");
 const BT = require("../BinaryTree/implementation");
 
+class Node {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
 /**
  * PROMPT:
  * Given the root of a binary tree, determine if it is a valid binary search tree (BST).
@@ -80,4 +88,25 @@ function largestValuesInTreeRows(t) {
   getDepth(t);
 
   return res;
+}
+
+/**
+ *
+ * Given a binary tree 'node' and an integer 'sum', determine whether there is
+ * a root to leaf path in 'node' such that the sum of vertex values equals 'sum'.
+ *
+ * @param {Node} node
+ * @param {number} sum
+ * @returns
+ */
+
+function hasPathWithGivenSum(node, sum) {
+  if (!node) return false;
+
+  if (!node.left && !node.right) return node.data === sum;
+
+  return (
+    hasPathWithGivenSum(node.left, sum - node.data) ||
+    hasPathWithGivenSum(node.right, sum - node.data)
+  );
 }
