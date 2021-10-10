@@ -89,8 +89,8 @@ var SingletonTester = (function () {
   // this is an emulation of static variables and methods
   var _static = {
     name: "SingletonTester",
+    
     // This is a method for getting an instance
-
     getInstance: function (options) {
       if (!instance) {
         instance = new Singleton(options);
